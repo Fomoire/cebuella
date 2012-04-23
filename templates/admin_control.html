@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Контроль потоков закачки</title>
+<link href="/static/css/admin.css" rel="stylesheet" type="text/css" />
+</head>
+<body leftmargin="0" marginheight="0">
+
+<div id = "top">
+  <p>&nbsp;</p>
+</div>
+<div id = "middle">
+
+<table width="864" align="center">
+  <tr>
+    <td width="420"><p id = "input">Добавить поток</p></td>
+    <td width="432"><p id = "input">Активные потоки</p></td>
+  </tr>
+    <tr>
+    <td>
+    
+    {% if addform.errors %}
+        <p style="color: red;">
+            Please correct the error{{ addform.errors|pluralize }} below.
+        </p>
+    {% endif %}
+    <form id="input" method="post" action="/queen/">{% csrf_token %}
+        <table align="center" id="input_t">
+            <p id = "input">Ссылка на стену группы</p>
+            {{ addform.link.errors }}
+            {{ addform.link }}
+            <p id = "input">Колличество потоков</p>
+            {{ addform.threads.errors }}
+            {{ addform.threads }}
+            <p id = "input">Предел скачивания листов</p>
+            {{ addform.limit.errors }}
+            {{ addform.limit }}
+        </table>
+        <p>&nbsp;</p>
+    <input type="submit" name = "add" id="input" value="Запуск"/>
+    </form>
+  </td>
+    <td>
+<table id = "table" align="center">
+  <tr>
+  <form method="post" action="/queen/" >
+    <td></td>
+    <td>Задача</td>
+    <td>Акт</td>
+    <td>Вкл</td>
+    <td>Сделал</td>
+
+  </tr>
+  <tr>
+    {% for thr in thr_str %}
+    <td><input name="checkbox_{{thr.id}}" type="checkbox" id = "table" value="{{thr.id}}"/></td>
+    <td>{{thr.task}}</td>
+    <td id = {% if thr.stat %}
+            "on">
+            {% else %}
+            "off">
+            {% endif %}
+            &nbsp;</td>
+    <td id = {% if thr.active %}
+            "on">
+            {% else %}
+            "off">
+            {% endif %}
+            &nbsp;</td>
+
+    <td>{{thr.work_done}}</td>
+    </tr>
+    {% endfor %}
+
+<tr id = "input">
+
+        <td></td>
+        <td>
+            {{ tabform.whatdo }}
+        </td>
+        <td><input name="do" type="submit" id = "table" value="Выполнить"/></td>
+        
+        <td></td>
+        
+    
+  </tr>
+</table>
+<p>&nbsp;</p>
+<input name="open" type="submit" id = "input" value="Открыть"/>
+</form>
+</tr>
+  </tr>
+</table>
+
+
+</div>
+<div id = "botom">
+<p>&nbsp;</p>
+</div>
+</body>
+</html>

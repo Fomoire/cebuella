@@ -1,0 +1,87 @@
+#top {
+	background-image: url(Main_top.png);
+	background-repeat: no-repeat;
+	background-position: center top;
+	font-family: Arial, Helvetica, sans-serif;
+	line-height: 152px;
+	color: #FFFFFF;
+	font-size: 0px;
+	background-attachment: scroll;
+	font-style: normal;
+	page-break-before: 0;
+	page-break-after: auto;
+}
+#on {
+	background-attachment: scroll;
+	background-image: url(on.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+#off {
+	background-attachment: scroll;
+	background-image: url(Off.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+#middle {
+	background-image: url(Main_middle.png);
+	background-position: center center;
+	background-repeat: repeat-y;
+	font-family: "Times New Roman", Times, serif;
+	text-indent: 11px;
+	font-size: 0px;
+	text-align: center;
+	line-height: 39px;
+	background-attachment: fixed;
+}
+#botom {
+	background-image: url(Main_bottom.png);
+	background-repeat: no-repeat;
+	background-position: center top;
+	font-size: 0px;
+	background-attachment: scroll;
+	line-height: 145px;
+	color: #CCCCCC;
+	font-family: "Times New Roman", Times, serif;
+	vertical-align: bottom;
+}
+
+#input {
+	font-size: 20px;
+	font-family: Century;
+	color: #666666;
+	text-align: center;
+	line-height: 20px;
+}
+#table {
+	font-family: Century;
+	font-size: 13px;
+	color: #666666;
+}
+
+#middle #input #input_t {
+	font-family: Century;
+	font-size: 22px;
+	color: #666666;
+}
+#stat {
+	font-family: BrowalliaUPC, "Browallia New";
+	font-size: 24px;
+	line-height: 30px;
+	color: #CCCCCC;
+	background-color: #666666;
+	text-indent: 40px;
+}
+ul.errorlist {
+        margin: 0;
+        padding: 0;
+    }
+    .errorlist li {
+	font-family: Century;
+	font-size: 13px;
+	color: red;
+    display: block;
+    margin: 0 0 3px;
+    padding: 4px 5px;
+    }

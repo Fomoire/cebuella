@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Cuebella</title>
+<link href="/static/css/user_f.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="/static/css/calendar.css"/>
+<script type="text/javascript" src="/static/js/i18n.js"></script>
+<script type="text/javascript" src="/static/js/core.js"></script>
+<script type="text/javascript" src="/static/js/calendar.js"></script>
+<script type="text/javascript" src="/static/js/DateTimeShortcuts.js"></script>
+
+<script>
+	function show_hide(id){
+	el=getEl(id);
+	if (el.style.display=="block"){
+		el.style.display="none";
+	}
+	else{
+		el.style.display="block";
+	}
+}
+function getEl(id){
+		return document.getElementById(id);
+}
+</script>
+</head>
+
+<body leftmargin="0" marginheight="0">
+
+<div id = "top">
+  <p>&nbsp;</p>
+</div>
+<div id = "middle">
+
+<table width="864" align="center">
+  <tr>
+    <td width="420" ><p id = "input">Диаграмма</a></td>
+    <td width="432"><p id = "input">Рейтинг</p></td>
+  </tr>
+
+  <tr>
+<td width="420">
+
+<a id="input_t" href="javascript:show_hide('search0');">Диаграмма появления новостей</a></br >
+        <form method="get" action="/" style="display:none;" id = "search0">
+                    <input name="news" type="text" id="input_t"/>
+                    <input type="submit" id="input_t" value="Построить"/>
+        </form>
+        
+
+<a id="input_t" href="javascript:show_hide('search1');">Диаграмма роста комментариев</a>
+
+        <form method="get" action="/" style="display:none;" id = "search1">
+                    <input name="words" type="text" id="input_t"/>
+<!--
+                    <table>
+                    <p id = "input_t">С какого времени</p>
+                    {{ newform.link.errors }}
+                    {{ newform.fro }}
+                    <p id = "input_t">По какое время</p>
+                    {{ newform.to.errors }}
+                    {{ newform.to }}
+                    </table>
+-->
+                    <input type="submit" id="input_t" value="Построить"/>
+        </form>
+
+
+</td>
+
+<td width="432" id = "input">
+
+    <a id="input_t" href="javascript:show_hide('news');">Новости</a>
+    <div style="display:none;" id = "news">
+        <table>
+        <tr ><p id="input_p">Наиболее обсужаемы</p></tr>
+        <tr>
+            <a id="input_t" href="/table/1/">За неделю </a>
+            <a id="input_t" href="/table/2/">За месяц </a>
+            <a id="input_t" href="/table/3/">За год </a>
+        </tr>
+
+        <tr ><p id="input_p">Наиболее понравившиеся</p></tr>
+            <a id="input_t" href="/table/4/">За неделю </a>
+            <a id="input_t" href="/table/5/">За месяц </a>
+            <a id="input_t" href="/table/6/">За год </a>
+        </tr>
+        </table>
+    </div>
+<a id="input_t" href="javascript:show_hide('Com');">Комментаторы</a>
+<form action="/" method="get" style="display:none;" id = "Com">
+  <p id="input">
+
+    <input name="from" type="text" id="input_t"/>
+    <input name="to" type="text" id="input_t"/>
+    <input type="submit" id="input" value="GO"/>
+  </p>
+    </form>
+
+        <a id="input_t" href="javascript:show_hide('groups');">Группы</a>
+<form action="/" method="get" style="display:none;" id = "groups">
+  <p id="input">
+
+    <input name="from" type="text" id="input_t"/>
+    <input name="to" type="text" id="input_t"/>
+    <input type="submit" id="input_t" value="GO"/>
+  </p>
+</form>
+
+    
+</td>
+  </tr>
+</table>
+
+
+</div>
+<div id = "botom">
+<p>&nbsp;</p>
+</div>
+</body>
+</html>
