@@ -1,5 +1,5 @@
 #-*- coding: utf-8 -*-
-# Django settings for Cuebella project.
+# Django settings for cebuella project.
 import os
 
 DEBUG = True
@@ -105,7 +105,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
 )
 
-ROOT_URLCONF = 'Cuebella.urls'
+ROOT_URLCONF = 'cebuella.urls'
 
 TEMPLATE_DIRS = (
     # this shit means path to templates вмым
@@ -122,8 +122,8 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'Cuebella.ants',
-    'Cuebella.pavo',
+    'cebuella.ants',
+    'cebuella.pavo',
     'south',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',

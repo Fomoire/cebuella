@@ -4,7 +4,7 @@ import threading, time
 from grab import GrabNetworkError, DataNotFound
 import datetime
 from linkload import linkload
-from Cuebella.ants.models import new, commentator,comment, thread_list
+from cebuella.ants.models import new, commentator,comment, thread_list
 from date_interp import date_interp
 
 class vk_a(threading.Thread):

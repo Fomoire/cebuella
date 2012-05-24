@@ -4,8 +4,8 @@
 
 from datetime import datetime, timedelta
 from time import time
-from Cuebella.pavo.forms import *
-from Cuebella.ants.models import *
+from cebuella.pavo.forms import *
+from cebuella.ants.models import *
 from django.shortcuts import render_to_response
 from django.db.models import Q
 import operator

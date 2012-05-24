@@ -3,13 +3,13 @@
 #       Copyright 2012 Linar <khasanshin.linar@gmail.com>
 
 from time import sleep
-from Cuebella.ants.forms import *
+from cebuella.ants.forms import *
 from grab import DataNotFound, GrabNetworkError
 from django.core.context_processors import csrf
 from django.http import HttpResponseRedirect
 from django.template import RequestContext
 from django.shortcuts import render_to_response
-from Cuebella.ants.models import *
+from cebuella.ants.models import *
 from anthill.linkload import linkload
 from anthill.ant import vk_a
 from Queue import Queue
@@ -17,6 +17,7 @@ from Queue import Queue
 def queen(request):
     thr_str = thread_list.objects.filter()
     tabform = TabThreads()
+    addform = AddThreads()
     if request.method == 'POST':
         if 'open' in request.POST.keys():
             thread_list.objects.create(stat = False,
@@ -62,7 +63,7 @@ def queen(request):
             return HttpResponseRedirect('/queen/')
                 
         #Обработка формы запуска потоков
-        if 'add' in request.POST.keys():
+        if 'add' in request.POST.keys() and checkbox_list:
             addform = AddThreads(request.POST)
             if addform.is_valid():
                 formdata = addform.cleaned_data

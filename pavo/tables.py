@@ -6,7 +6,7 @@
 
 from django.shortcuts import render_to_response
 from datetime import datetime, timedelta
-from Cuebella.ants.models import new
+from cebuella.ants.models import new
 
 def newslist(period, order):
     news = new.objects.filter(n_date__gte=datetime.now()-timedelta(days=period)).order_by(order)[:10]

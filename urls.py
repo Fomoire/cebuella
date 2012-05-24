@@ -1,7 +1,7 @@
 from django.conf.urls.defaults import patterns, include, url
-from Cuebella.ants.queen import queen
-from Cuebella.pavo.views import pavo
-from Cuebella.pavo.tables import tables
+from cebuella.ants.queen import queen
+from cebuella.pavo.views import pavo
+from cebuella.pavo.tables import tables
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()

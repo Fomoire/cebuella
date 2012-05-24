@@ -1,5 +1,5 @@
 from django.contrib import admin
-from Cuebella.ants.models import *
+from cebuella.ants.models import *
 
 class news_admin(admin.ModelAdmin):
     list_display = ('sw_id', 'n_date','coms')
