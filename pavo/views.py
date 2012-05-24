@@ -89,7 +89,6 @@ def pavo(request):
             news.sort()
             min = news[0]['n_date']
             max = news[-1]['n_date']
-            print news
             #Отсчитываем комменты:
             delta=max - min
             dt = delta/40 # Шаг сравнения
