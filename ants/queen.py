@@ -2,22 +2,30 @@
 # -*- coding: utf-8 -*-
 #       Copyright 2012 Linar <khasanshin.linar@gmail.com>
 
-from time import sleep
-from cebuella.ants.forms import *
+from Queue import Queue
 from grab import DataNotFound, GrabNetworkError
 from django.core.context_processors import csrf
 from django.http import HttpResponseRedirect
 from django.template import RequestContext
 from django.shortcuts import render_to_response
+
 from cebuella.ants.models import *
 from anthill.linkload import linkload
 from anthill.ant import vk_a
-from Queue import Queue
+from cebuella.ants.forms import *
+
 
 def queen(request):
+    """
+    This function fills the task stack and start threads, also they
+    returns page of administrator form.
+    """
+    
     thr_str = thread_list.objects.filter()
     tabform = TabThreads()
     addform = AddThreads()
+    
+    #Processing the post request
     if request.method == 'POST':
         if 'open' in request.POST.keys():
             thread_list.objects.create(stat = False,
@@ -62,7 +70,7 @@ def queen(request):
                             
             return HttpResponseRedirect('/queen/')
                 
-        #Обработка формы запуска потоков
+        #Processing of the initiation form of threads
         if 'add' in request.POST.keys() and checkbox_list:
             addform = AddThreads(request.POST)
             if addform.is_valid():
@@ -75,7 +83,7 @@ def queen(request):
                     limit = 0
 
                 if 'vk.com' in site:
-                    # Пытаемся получить колличество новостей в группе
+                    # Trying to get a number of news in the group
                     try:
                         p=linkload(site)
                         link = site.replace('vk.com','')
@@ -87,24 +95,24 @@ def queen(request):
                             return
                     #Обрабатываем исключение - "Ничего нет" и ошибка сети
                     except DataNotFound, GrabNetworkError:
-                        lo=0
+                        lo = 0
                         pass
                         
                     #Кидаем в базу заданий ссылки с оффсетом
-                    if limit*20>lo or limit == 0:
+                    if limit * 20 > lo or limit == 0:
                         limit = lo
                     else:
-                        limit*=20
+                        limit *= 20
                     f_tasks = Queue()
                     for i in xrange(0, limit, 20):
-                        lin = site+'?offset='+str(i)
+                        lin = site + '?offset=' + str(i)
                         f_tasks.put(lin)
                     
                     #Получаем строчку из таблички потоков, для контроля и учета
                     # и запускаем потоки
                     thre = thread_list.objects.filter(active = True, stat = False)
                     for t in xrange(len(thre)):
-                        if t+1 <= thr_l:
+                        if t + 1 <= thr_l:
                             thre[t].stat = True
                             thre[t].save()
                             ant_t = vk_a(f_tasks, thre[t])

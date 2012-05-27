@@ -1,12 +1,13 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#       date_interp.py
-#       
 #       Copyright 2012 Linar <khasanshin.linar@gmail.com>
 import datetime
 
 def am_pm(st):
+    """
+    Interpretation to 24 hours.
+    """
+    
     if ' am' in st:
         r = st.replace(' am','')
         if '|' in r:
@@ -23,6 +24,10 @@ def am_pm(st):
         return (int(mt[0])+12,int(mt[1]))
 
 def date_interp(times):
+    """
+    Translating string date to datetime type.
+    """
+    
     tim_d=[]
     for i in times:
         f=False
