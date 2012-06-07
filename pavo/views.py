@@ -77,7 +77,7 @@ def pavo(request):
                  )
     #Поиск посторойка диаграммы появления новостей
     if ('news' in request.GET):
-        t = ime()
+        t = time()
         # Получаем массив слов
         words = request.GET['news']
         search_words = words.split(' ')

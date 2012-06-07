@@ -35,13 +35,6 @@
 	vertical-align: bottom;
 }
 
-#input {
-	font-size: 24px;
-	font-family: Century;
-	color: #666666;
-	text-align: center;
-	line-height: 20px;
-}
 #table {
 	font-family: Century;
 	font-size: 13px;
@@ -93,18 +86,7 @@
 	background-color: #666666;
 	text-indent: 40px;
 }
-ul.errorlist {
-        margin: 0;
-        padding: 0;
-    }
-    .errorlist li {
-	font-family: Century;
-	font-size: 13px;
-	color: red;
-    display: block;
-    margin: 0 0 3px;
-    padding: 4px 5px;
-    }
+
 
 #tab_middle {
 	background-attachment: scroll;

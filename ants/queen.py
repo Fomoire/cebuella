@@ -71,7 +71,7 @@ def queen(request):
             return HttpResponseRedirect('/queen/')
                 
         #Processing of the initiation form of threads
-        if 'add' in request.POST.keys() and checkbox_list:
+        if 'add' in request.POST.keys():
             addform = AddThreads(request.POST)
             if addform.is_valid():
                 formdata = addform.cleaned_data

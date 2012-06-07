@@ -1,32 +1,8 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Таблица</title>
+{% extends "index.html" %}
+
+{% block content %}
 <link href="/static/css/user_f.css" rel="stylesheet" type="text/css" />
-</head>
-<script>
-	function show_hide(id){
-	el=getEl(id);
-	if (el.style.display=="block"){
-		el.style.display="none";
-	}
-	else{
-		el.style.display="block";
-	}
-}
-function getEl(id){
-		return document.getElementById(id);
-	}
-</script>
 
-
-<body topmargin="0">
-<div id = "top">
-  <p>&nbsp;</p>
-</div>
-
-<div id = "middle_mono">
 <table width="600" align="center" id = "tab_top_b">
 <p>&nbsp;</p>
 <p id="input_t">{{ str_l }}</p>
@@ -46,12 +22,4 @@ function getEl(id){
 <form action="/" method="get" id="input">
 <input type="submit" id="input" value="Вернуться"/>
 </form>
-</div>
-
-<div id = "botom_mono">
-<p>&nbsp;</p>
-
-</div>
-
-</body>
-</html>
+{% endblock %}

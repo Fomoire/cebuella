@@ -3,12 +3,13 @@ from cebuella.ants.queen import queen
 from cebuella.pavo.views import pavo
 from cebuella.pavo.tables import tables
 from cebuella.ants.parrot import parrot
-# Uncomment the next two lines to enable the admin:
+from cebuella.ants.views import maine
 from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    url(r'^$', pavo),
+    url(r'^$', maine),
+    url(r'^pavo/', pavo),
     url(r'^queen/', queen),
     url(r'table/(\d{1,2})/$', tables),
     url(r'^parrot/', parrot),

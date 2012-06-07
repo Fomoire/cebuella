@@ -30,24 +30,24 @@ def date_interp(times):
     
     tim_d=[]
     for i in times:
-        f=False
+        f = False
         if 'Today at ' in i:
-            y=i.replace('Today at ','')
+            y = i.replace('Today at ','')
             h = am_pm(y)
             time = datetime.datetime.now()
             time = time.replace(hour=h[0],minute = h[1])
             tim_d.append(time)
-            f=True
+            f = True
             
         if 'Yesterday at ' in i:
-            y=i.replace('Yesterday at ','')
+            y = i.replace('Yesterday at ','')
             h = am_pm(y)
             time = datetime.datetime.now() - datetime.timedelta(days=1)
             time = time.replace(hour=h[0],minute = h[1])
             tim_d.append(time)
-            f=True
+            f = True
         
-        if f==False:
+        if not f:
             try:
                 if '|' in i:
                     time = datetime.datetime.strptime(i,'%d %b at %I:%M %p|')

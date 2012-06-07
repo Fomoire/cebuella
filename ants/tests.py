@@ -18,12 +18,24 @@ Replace this with more appropriate tests for your application.
 
 #from grab import Grab
 
-gr = Grab()
-gr.setup(headers = {'Authorization':'Bearer UX2MHjmCwX6H5aE4aAaWcwqRgYSsQG7GFbg/vzfFGK4='})
-url = 'http://api.microsofttranslator.com/V2/Http.svc/Translate?to=en&appId=&text=Привет'
-gr.go(url)
-print gr.response.body
+#g_api = Grab()
+#gr = Grab()
+
+#g_api.setup(post = {'grant_type':'client_credentials',
+                    #'client_id':'Fomoire',
+                    #'client_secret':'yO2bsq13X7KvDwxLIWVLjrgGvd/0jOBV/JFiJGSGtbk=',
+                    #'scope':'http://api.microsofttranslator.com'})
+#g_api.go('https://datamarket.accesscontrol.windows.net/v2/OAuth2-13')
+
+#api_token = eval(g_api.response.body)
+
+#gr.setup(headers = {'Authorization':'Bearer ' + api_token['access_token']})
+
+#url = 'http://api.microsofttranslator.com/V2/Http.svc/Translate?to=en&appId=&text=Ебать'
+#gr.go(url)
+#print gr.response.body
 
 #from microsofttranslator import Translator
 #translator = Translator('TOrOfJtnPQ0gMt0sJF1IwZyRCKHGcS3enLKV1Noric7rXyOG-NdcVxADSHU9a_IHW')
 #print translator.translate("Hello", "pt")
+
