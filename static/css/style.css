@@ -1,0 +1,108 @@
+body {
+	margin: 0;
+	padding: 0;
+	min-width: 1024px;
+	background-color: #CCCCCC;
+}
+* html body {
+width:expression(document.documentElement.clientWidth < 1024 ? "1024px" : "auto");
+}
+#main {
+width: 100%;
+}
+
+.header {
+	width: 100%;
+	height: 152px;
+	background-image: url(header.png);
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+	background-position: center;
+}
+.footer {
+	border: 0;
+	padding: 0;
+	margin:0;
+	display: inline-block;
+	width: 100%;
+	height: 70px;
+	clear: both;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	color: #999999;
+	background-attachment: scroll;
+	background-image: url(footer.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	text-align: left;
+}
+.content {
+	width: 100%;
+	float: left;
+	background-attachment: scroll;
+	background-image: url(center.png);
+	background-repeat: repeat-y;
+	background-position: center;
+}
+h1 {
+	font-family: Century;
+	font-size: 24px;
+	color: #999999;
+}
+#table {
+	font-family: Century;
+	font-size: 16px;
+	color: #666666;
+}
+#on {
+	background-attachment: scroll;
+	background-image: url(on.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+#off {
+	background-attachment: scroll;
+	background-image: url(Off.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+ul.errorlist {
+        margin: 0;
+        padding: 0;
+    }
+    .errorlist li {
+	font-family: Century;
+	font-size: 13px;
+	color: red;
+    display: block;
+    margin: 0 0 3px;
+    padding: 4px 5px;
+    }
+#stat {
+	font-family: BrowalliaUPC, "Browallia New";
+	font-size: 24px;
+	line-height: 30px;
+	color: #CCCCCC;
+	background-color: #666666;
+	text-indent: 40px;
+}
+#input_t {
+	font-family: Century;
+	font-size: 18px;
+	color:#0073E3;
+	text-decoration: none;
+}
+#input_p {
+	font-size: 18px;
+	font-family: Century;
+	color: #666666;
+	text-align: center;
+	line-height: 20px;
+}
+#input {
+	font-size: 22px;
+	font-family: Century;
+	color: #666666;
+	text-align: center;
+	line-height: 20px;
+}

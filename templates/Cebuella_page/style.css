@@ -1,0 +1,51 @@
+body {
+	margin: 0;
+	padding: 0;
+	min-width: 1024px;
+	background-color: #CCCCCC;
+}
+/* Следуящая запись нужна для IE  */
+* html body {
+width:expression(document.documentElement.clientWidth < 1024 ? "1024px" : "auto");
+}
+#main {
+width: 100%;
+}
+.header {
+	width: 100%;
+	height: 152px;
+	background-image: url(header.png);
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+	background-position: center;
+}
+.footer {
+	border: 0;
+	padding: 0;
+	margin:0;
+	display: inline-block;
+	width: 100%;
+	height: 70px;
+	clear: both;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	color: #999999;
+	background-attachment: scroll;
+	background-image: url(footer.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	text-align: left;
+}
+.content {
+	width: 100%;
+	float: left;
+	background-attachment: scroll;
+	background-image: url(center.png);
+	background-repeat: repeat-y;
+	background-position: center;
+}
+h1 {
+	font-family: Century;
+	font-size: 24px;
+	color: #999999;
+}
