@@ -6,7 +6,9 @@ from datetime import datetime, timedelta
 from time import time
 from django.shortcuts import render_to_response
 from django.db.models import Q
+from django.core.cache import cache
 import operator
+
 
 from cebuella.pavo.forms import *
 from cebuella.ants.models import *
@@ -18,63 +20,78 @@ def pavo(request):
     
     if ('words' in request.GET):
         t = time()
-        # Получаем массив слов
+        
+        cache_key = request.GET['words'].replace(' ','')
         words = request.GET['words']
-        search_words = words.split(' ')
-        qsearch_words = []
-        for w in search_words:
-            qsearch_words.append(Q(n_text__icontains = w))
-        
-        # Отыскиваем новости
-        news = new.objects.filter(reduce(operator.and_,
-                                            qsearch_words)).values('id')
-        f = len(news)
-        
-        if news:
-
-            # Находим комменты найденных новостей
-            qcom = []
-            comments = []
+        cache_time = 1800
+        result = cache.get(cache_key)
+        if not result:
+            # Получаем массив слов
+            search_words = words.split(' ')
+            qsearch_words = []
+            for w in search_words:
+                qsearch_words.append(Q(n_text__icontains = w))
             
-            for ids in news:
-                #qcom.append(Q(n_id = ids['id']))
-                 comments+=(comment.objects.filter(
-                                    n_id = ids['id']).values('c_time'))
-
-            comments.sort()
-
-            min = comments[0]['c_time']
-            max = comments[-1]['c_time']
+            # Отыскиваем новости
+            news = new.objects.filter(reduce(operator.and_,
+                                                qsearch_words)).values('id')
+            f = len(news)
             
+            if news:
 
-            #Отсчитываем комменты:
-            delta = max - min
-            dt = delta/40 # Шаг сравнения
-            data = []
-            k = 0
-            step = min
-            for tik in comments:
-                k += 1
-                if tik['c_time'] > step:
-                    data.append(k)
-                    step += dt
-            t = time() - t
-            t = round(t, 4)
-            return render_to_response('pavo_finded.html', {'finded':f,
-                                                     'words': words,
-                                                     'start': min,
-                                                     'data':data,
-                                                     'dt':int(dt.total_seconds()),
-                                                     'end':max,
-                                                     'time':t}
-             )
-        else:
-            t = time()-t
-            t = round(t, 4)
-            return render_to_response('pavo_finded.html', {'finded':f,
-                 'words': words,
-                 'time':t}
-                 )
+                # Находим комменты найденных новостей
+                comments = []
+                for ids in news:
+                    #qcom.append(Q(n_id = ids['id']))
+                     comments+=(comment.objects.filter(
+                                        n_id = ids['id']).values('c_time'))
+                
+                comments.sort()
+                
+                min = comments[0]['c_time']
+                max = comments[-1]['c_time']
+
+                #Отсчитываем комменты:
+                delta = max - min
+                dt = delta/40 # Шаг сравнения
+                data = []
+                k = 0
+                step = min
+                for tik in comments:
+                    k += 1
+                    if tik['c_time'] > step:
+                        data.append(k)
+                        step += dt
+                t = time() - t
+                t = round(t, 4)
+                
+                result = []
+                cache.set(cache_key,[data, f, min, max, int(dt.total_seconds())], cache_time)
+                
+                return render_to_response('pavo_finded.html', {'finded':f,
+                                                         'words': words,
+                                                         'start': min,
+                                                         'data':data,
+                                                         'dt':int(dt.total_seconds()),
+                                                         'end':max,
+                                                         'time':t})
+            else:
+                t = time()-t
+                t = round(t, 4)
+                cache.set(cache_key,[[], f, '', '', ''], cache_time)
+                return render_to_response('pavo_finded.html', {'finded':f,
+                     'words': words,
+                     'time':t}
+                     )
+        t = time()-t
+        t = round(t, 4)
+        return render_to_response('pavo_finded.html', {'finded':result[1],
+                                                         'words': words,
+                                                         'start': result[2],
+                                                         'data':result[0],
+                                                         'dt':result[4],
+                                                         'end':result[3],
+                                                         'time':t})
     #Поиск посторойка диаграммы появления новостей
     if ('news' in request.GET):
         t = time()
