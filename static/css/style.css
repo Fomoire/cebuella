@@ -46,8 +46,9 @@ width: 100%;
 }
 h1 {
 	font-family: Century;
-	font-size: 24px;
-	color: #999999;
+	font-size: 22px;
+	color:#0073E3;
+	text-decoration: none;
 }
 #table {
 	font-family: Century;

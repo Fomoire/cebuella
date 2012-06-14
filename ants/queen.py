@@ -10,8 +10,8 @@ from django.template import RequestContext
 from django.shortcuts import render_to_response
 
 from cebuella.ants.models import *
-from anthill.linkload import linkload
 from anthill.ant import vk_a
+from anthill.linkload import linkload
 from cebuella.ants.forms import *
 
 

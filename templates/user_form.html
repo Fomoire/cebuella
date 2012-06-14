@@ -9,30 +9,57 @@
 <script type="text/javascript" src="/static/js/DateTimeShortcuts.js"></script>
 
 <script>
-	function show_hide(id){
+function show(id){
 	el=getEl(id);
+    el1=getEl('butt1');
+    el2=getEl('butt2');
+	if (el.style.display=="none"){
+		el.style.display="block";
+    if (id=='search0'){
+        el1.src="/static/css/but28.png";
+        el2.src="/static/css/but29.png";
+    }
+    else{
+        el1.src="/static/css/but27.png";
+        el2.src="/static/css/but30.png";
+    }}
+}
+	function hide(id){
+	el=getEl(id);
+    el1=getEl('butt1');
+    el2=getEl('butt2');
 	if (el.style.display=="block"){
 		el.style.display="none";
-	}
-	else{
-		el.style.display="block";
-	}
+
+        if (id=='search0'){
+            el1.src="/static/css/but27.png";
+            el2.src="/static/css/but30.png";
+        }
+        else{
+            el1.src="/static/css/but28.png";
+            el2.src="/static/css/but29.png";
+        }}
+
 }
 function getEl(id){
 		return document.getElementById(id);
 }
 </script>
-<h1 id = "input" align="center">Диаграмма</h1>
+<h1 align="center">Диаграмма</h1>
+<div align="center">
+	<a id="input_t" href="javascript:show('search0');hide('search1');"><img src="/static/css/but28.png" border="0" id="butt1"</a>
+	<a id="input_t" href="javascript:show('search1');hide('search0');"><img src="/static/css/but29.png" border="0" id="butt2"></a>
 
-<a id="input_t" href="javascript:show_hide('search0');">Диаграмма появления новостей</a></br >
-        <form method="get" action="/pavo/" style="display:none;" id = "search0">
+
+        <form method="get" action="/pavo/" style="display:block;" id = "search0">
+					<p id = "input">Динамика количества новостей с:</p>
                     <input name="news" type="text" id="input_t"/>
                     <input type="submit" id="input_t" value="Построить"/>
         </form>
         
-<a id="input_t" href="javascript:show_hide('search1');">Диаграмма роста комментариев</a>
 
         <form method="get" action="/pavo/" style="display:none;" id = "search1">
+                    <p id = "input">Динамика количества комментариев с:</p>
                     <input name="words" type="text" id="input_t"/>
 
 <!--
@@ -47,8 +74,10 @@ function getEl(id){
 -->
 
                     <input type="submit" id="input_t" value="Построить"/>
-        </form>
 
+        </form>
+</div>
+        </br>        </br>
 <!--
     <a id="input_t" href="javascript:show_hide('news');">Новости</a>
     <div style="display:none;" id = "news">

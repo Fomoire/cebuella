@@ -42,7 +42,6 @@ def pavo(request):
                 # Находим комменты найденных новостей
                 comments = []
                 for ids in news:
-                    #qcom.append(Q(n_id = ids['id']))
                      comments+=(comment.objects.filter(
                                         n_id = ids['id']).values('c_time'))
                 
