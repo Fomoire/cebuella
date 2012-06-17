@@ -1,6 +1,6 @@
 from django.conf.urls.defaults import patterns, include, url
 from cebuella.ants.queen import queen
-from cebuella.pavo.views import pavo
+from cebuella.pavo.views import pavo, chart
 from cebuella.pavo.tables import tables
 from cebuella.ants.parrot import parrot
 from cebuella.ants.views import maine
@@ -13,6 +13,7 @@ urlpatterns = patterns('',
     url(r'^queen/', queen),
     url(r'table/(\d{1,2})/$', tables),
     url(r'^parrot/', parrot),
+    url(r'^chart/', chart),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

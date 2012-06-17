@@ -36,7 +36,9 @@ def tables(request, page):
         news = newslist(365,'-likes')
         str_l = 'За последий год наиболее понравившиеся:'
     
-
+    admin = False
+    if request.user.is_authenticated():
+        admin = True
     
-    return render_to_response('tabl_page.html',{'news':news, 'str_l': str_l})
+    return render_to_response('tabl_page.html',{'news':news, 'str_l': str_l,  'admin':admin})
     

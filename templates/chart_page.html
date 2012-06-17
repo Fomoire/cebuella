@@ -1,0 +1,42 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+    <a id="input_t" href="javascript:show_hide('news');">Новости</a>
+    <div style="display:block;" id = "news">
+        <table>
+        <tr ><p id="input_p">Наиболее обсуждаемые</p></tr>
+        <tr>
+            <a id="input_t" href="/table/1/">За неделю </a>
+            <a id="input_t" href="/table/2/">За месяц </a>
+            <a id="input_t" href="/table/3/">За год </a>
+        </tr>
+
+        <tr ><p id="input_p">Наиболее понравившиеся</p></tr>
+            <a id="input_t" href="/table/4/">За неделю </a>
+            <a id="input_t" href="/table/5/">За месяц </a>
+            <a id="input_t" href="/table/6/">За год </a>
+        </tr>
+        </table>
+    </div>
+<a id="input_t" href="javascript:show_hide('Com');">Комментаторы</a>
+<form action="/" method="get" style="display:block;" id = "Com">
+  <p id="input">
+
+    <input name="from" type="text" id="input_t"/>
+    <input name="to" type="text" id="input_t"/>
+    <input type="submit" id="input" value="GO"/>
+  </p>
+    </form>
+
+        <a id="input_t" href="javascript:show_hide('groups');">Группы</a>
+<form action="/" method="get" style="display:block;" id = "groups">
+  <p id="input">
+
+    <input name="from" type="text" id="input_t"/>
+    <input name="to" type="text" id="input_t"/>
+    <input type="submit" id="input_t" value="GO"/>
+  </p>
+</form>
+
+{% endblock %}

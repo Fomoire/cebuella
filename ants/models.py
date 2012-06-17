@@ -57,3 +57,4 @@ class comment(models.Model):
     sw_id = models.CharField(max_length=80)
     c_time = models.DateTimeField()
     likes = models.IntegerField(null=True)
+    text_vector = models.TextField(null=True)

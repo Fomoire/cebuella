@@ -1,7 +1,6 @@
 {% extends "index.html" %}
 
 {% block content %}
-<link href="/static/css/style.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" type="text/css" href="/static/css/calendar.css"/>
 <script type="text/javascript" src="/static/js/i18n.js"></script>
 <script type="text/javascript" src="/static/js/core.js"></script>
@@ -45,7 +44,7 @@ function getEl(id){
 		return document.getElementById(id);
 }
 </script>
-<h1 align="center">Диаграмма</h1>
+<p class="h">Диаграмма</p>
 <div align="center">
 	<a id="input_t" href="javascript:show('search0');hide('search1');"><img src="/static/css/but28.png" border="0" id="butt1"</a>
 	<a id="input_t" href="javascript:show('search1');hide('search0');"><img src="/static/css/but29.png" border="0" id="butt2"></a>
@@ -59,7 +58,7 @@ function getEl(id){
         
 
         <form method="get" action="/pavo/" style="display:none;" id = "search1">
-                    <p id = "input">Динамика количества комментариев с:</p>
+                    <p id = "input">Динамика количества комментариев в новостях с:</p>
                     <input name="words" type="text" id="input_t"/>
 
 <!--
@@ -73,49 +72,12 @@ function getEl(id){
                     </table>
 -->
 
+
                     <input type="submit" id="input_t" value="Построить"/>
 
         </form>
 </div>
         </br>        </br>
-<!--
-    <a id="input_t" href="javascript:show_hide('news');">Новости</a>
-    <div style="display:none;" id = "news">
-        <table>
-        <tr ><p id="input_p">Наиболее обсуждаемые</p></tr>
-        <tr>
-            <a id="input_t" href="/table/1/">За неделю </a>
-            <a id="input_t" href="/table/2/">За месяц </a>
-            <a id="input_t" href="/table/3/">За год </a>
-        </tr>
-
-        <tr ><p id="input_p">Наиболее понравившиеся</p></tr>
-            <a id="input_t" href="/table/4/">За неделю </a>
-            <a id="input_t" href="/table/5/">За месяц </a>
-            <a id="input_t" href="/table/6/">За год </a>
-        </tr>
-        </table>
-    </div>
-<a id="input_t" href="javascript:show_hide('Com');">Комментаторы</a>
-<form action="/" method="get" style="display:none;" id = "Com">
-  <p id="input">
-
-    <input name="from" type="text" id="input_t"/>
-    <input name="to" type="text" id="input_t"/>
-    <input type="submit" id="input" value="GO"/>
-  </p>
-    </form>
-
-        <a id="input_t" href="javascript:show_hide('groups');">Группы</a>
-<form action="/" method="get" style="display:none;" id = "groups">
-  <p id="input">
-
-    <input name="from" type="text" id="input_t"/>
-    <input name="to" type="text" id="input_t"/>
-    <input type="submit" id="input_t" value="GO"/>
-  </p>
-</form>
--->
 
 {% endblock %}
 

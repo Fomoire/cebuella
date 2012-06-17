@@ -13,7 +13,7 @@ class vk_a(threading.Thread):
         self.thre = thre
         threading.Thread.__init__(self)
 
-    def run ( self ):
+    def run(self):
         try:
             while (self.tasks.empty()!=True)&(self.thre.active == True):
                 # Снимаем задачу из пула
@@ -257,4 +257,3 @@ class vk_a(threading.Thread):
                     return False
             else:
                 return False
-    

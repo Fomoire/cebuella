@@ -18,6 +18,10 @@ def pavo(request):
     Processing the request to data base from user.
     """
     
+    admin = False
+    if request.user.is_authenticated():
+        admin = True
+
     if ('words' in request.GET):
         t = time()
         
@@ -73,14 +77,17 @@ def pavo(request):
                                                          'data':data,
                                                          'dt':int(dt.total_seconds()),
                                                          'end':max,
-                                                         'time':t})
+                                                         'time':t,
+                                                         'admin':admin})
             else:
                 t = time()-t
                 t = round(t, 4)
                 cache.set(cache_key,[[], f, '', '', ''], cache_time)
+                
                 return render_to_response('pavo_finded.html', {'finded':f,
                      'words': words,
-                     'time':t}
+                     'time':t,
+                     'admin':admin}
                      )
         t = time()-t
         t = round(t, 4)
@@ -90,7 +97,8 @@ def pavo(request):
                                                          'data':result[0],
                                                          'dt':result[4],
                                                          'end':result[3],
-                                                         'time':t})
+                                                         'time':t,
+                                                         'admin':admin})
     #Поиск посторойка диаграммы появления новостей
     if ('news' in request.GET):
         t = time()
@@ -132,14 +140,25 @@ def pavo(request):
                                                      'data':data,
                                                      'dt':int(dt.total_seconds()),
                                                      'end':max,
-                                                     'time':t})
+                                                     'time':t,
+                                                     'admin':admin})
         else:
             t = time() - t
             t = round(t, 4)
             return render_to_response('pavo_finded.html', {'finded':f,
                                                             'words': words,
-                                                            'time':t})
+                                                            'time':t,
+                                                            'admin':admin})
         
-    
     newform = NewsTab()
-    return render_to_response('user_form.html',{'newform':newform})
+    return render_to_response('user_form.html',{'newform':newform, 'admin':admin})
+
+
+def chart(request):
+    """Shows charts pages"""
+    
+    admin = False
+    if request.user.is_authenticated():
+        admin = True
+
+    return render_to_response('chart_page.html',{'admin':admin})

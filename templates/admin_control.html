@@ -1,55 +1,61 @@
 {% extends "index.html" %}
 
 {% block content %}
-
+<link rel="stylesheet" type="text/css" href="/static/css/calendar.css"/>
+<script type="text/javascript" src="/static/js/i18n.js"></script>
+<script type="text/javascript" src="/static/js/core.js"></script>
+<script type="text/javascript" src="/static/js/calendar.js"></script>
+<script type="text/javascript" src="/static/js/DateTimeShortcuts.js"></script>
 <script>
 function show(id){
-	el=getEl(id);
+    el=getEl(id);
     el1=getEl('butt1');
     el2=getEl('butt2');
-	if (el.style.display=="none"){
-		el.style.display="block";
+    el3=getEl('butt3');
+    if (el.style.display=="none"){
+        el.style.display="block";
     if (id=='start'){
         el1.src="/static/css/but25.png";
         el2.src="/static/css/but22.png";
+        el3.src="/static/css/but23.png";
     }
-    else{
+    if(id=='aktpot'){
         el1.src="/static/css/but26.png";
         el2.src="/static/css/but21.png";
-    }}
+        el3.src="/static/css/but23.png";
+    }
+    if(id=='startan'){
+        el1.src="/static/css/but25.png";
+        el2.src="/static/css/but21.png";
+        el3.src="/static/css/but24.png";
+    }
+    }
 }
-	function hide(id){
-	el=getEl(id);
+    function hide(id){
+    el=getEl(id);
     el1=getEl('butt1');
     el2=getEl('butt2');
-	if (el.style.display=="block"){
-		el.style.display="none";
-
-        if (id=='start'){
-            el1.src="/static/css/but26.png";
-            el2.src="/static/css/but21.png";
-        }
-        else{
-            el1.src="/static/css/but25.png";
-            el2.src="/static/css/but22.png";
-        }}
-
+    if (el.style.display=="block"){
+        el.style.display="none";
+}
 }
 
 function getEl(id){
-		return document.getElementById(id);
+        return document.getElementById(id);
 }
 </script>
 <link href="/static/css/style.css" rel="stylesheet" type="text/css" />
 
 <div align="center">
-<a href="javascript:show('aktpot');hide('start');">
-    <img src="/static/css/but25.png" border="0" id="butt1"></a>
-<a href="javascript:show('start');hide('aktpot');">
-    <img src="/static/css/but22.png" border="0" id="butt2"></a>
+<a href="javascript:show('aktpot');hide('start');hide('startan');">
+    <img src="/static/css/but26.png" border="0" id="butt1"></a>
+<a href="javascript:show('start');hide('aktpot');hide('startan');">
+    <img src="/static/css/but21.png" border="0" id="butt2"></a>
+<a href="javascript:show('startan');hide('aktpot');hide('start');">
+    <img src="/static/css/but23.png" border="0" id="butt3"></a>
 </div>
 
-<div id="aktpot" style="display:none;">
+<div id="aktpot" style="display:block;">
 <table id = "table" align="center">
   <tr>
   <td></td>
@@ -96,10 +102,10 @@ function getEl(id){
 </form>
 </div>
 
-<div id="start" style="display:block;">
+<div id="start" style="display:none;">
     {% if addform.errors %}
-        <p style="color: red;">
-            Please correct the error{{ addform.errors|pluralize }} below.
+        <p style="color: red;" align="center">
+            Пожалуйста исправьте ошибки ниже.
         </p>
     {% endif %}
     <form id = "table" method="post" action="/queen/" align="center">{% csrf_token %}
@@ -107,7 +113,7 @@ function getEl(id){
             <p id = "table">Ссылка на стену группы</p>
             {{ addform.link.errors }}
             {{ addform.link }}
-            <p id = "table">Колличество потоков</p>
+            <p id = "table">Количество потоков</p>
             {{ addform.threads.errors }}
             {{ addform.threads }}
             <p id = "table">Предел скачивания листов</p>
@@ -117,4 +123,30 @@ function getEl(id){
     <input type="submit" name = "add" id="input_t" value="Запуск"/>
     </form>
 </div>
+
+<div id="startan" style="display:none;">
+    {% if addanform.errors %}
+        <p style="color: red;">
+            Пожалуйста исправьте ошибки ниже.
+        </p>
+    {% endif %}
+    <form id = "table" method="post" action="/queen/" align="center">
+        <table align="center" id="input_t">
+            <p id = "table">Количество обрабатываемых данных</p>
+            {{ addanform.number_of_an.errors }}
+            {{ addanform.number_of_an }}
+            <p id = "table">Количество потоков</p>
+            {{ addanform.threads.errors }}
+            {{ addanform.threads }}
+            <p id = "table">C даты</p>
+            {{ addanform.from_date.errors }}
+            {{ addanform.from_date }}
+            <p id = "table">По дату</p>
+            {{ addanform.to_date.errors }}
+            {{ addanform.to_date }}
+        </table>
+    <input type="submit" name = "addan" id="input_t" value="Запуск"/>
+    </form>
+</div>
+
 {% endblock %}
