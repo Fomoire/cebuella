@@ -1,0 +1,24 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+<table width="316" align="center" class = "ftab_top">
+<p id="input_t" align="center">{{ str_l }}, обработанно за {{time}}</p>
+<td width="200" align="center">Лексемы</td>
+<td align="center">Частота</td>
+</table>
+{% for l in lex %}
+<table width="316" align="center" class = "ftab_middle">
+<td width="200" align="center">{{l.0}}</td>
+<td align="center">{{l.1}}</td> 
+</table>
+{% endfor %}
+<table width="316" align="center" class = "ftab_fotter">
+<td width="200" align="center">&nbsp;</td>
+<td align="center">&nbsp;</td>
+</table>
+<p>&nbsp;</p>
+<form action="/freq/" method="get" id="input">
+<input type="submit" id="input_t" value="Вернуться"/>
+</form>
+{% endblock %}

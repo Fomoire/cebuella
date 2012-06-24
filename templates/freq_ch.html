@@ -1,0 +1,60 @@
+{% extends "index.html" %}
+
+{% block content %}
+<script>
+function show(id){
+	el=getEl(id);
+    el1=getEl('butt1');
+    el2=getEl('butt2');
+	if (el.style.display=="none"){
+		el.style.display="block";
+    if (id=='search0'){
+        el1.src="/static/css/but28.png";
+        el2.src="/static/css/but29.png";
+    }
+    else{
+        el1.src="/static/css/but27.png";
+        el2.src="/static/css/but30.png";
+    }}
+}
+	function hide(id){
+	el=getEl(id);
+    el1=getEl('butt1');
+    el2=getEl('butt2');
+	if (el.style.display=="block"){
+		el.style.display="none";
+
+        if (id=='search0'){
+            el1.src="/static/css/but27.png";
+            el2.src="/static/css/but30.png";
+        }
+        else{
+            el1.src="/static/css/but28.png";
+            el2.src="/static/css/but29.png";
+        }}
+
+}
+function getEl(id){
+		return document.getElementById(id);
+}
+</script>
+<p class="h">Частота лексем</p>
+<div align="center">
+	<a id="input_t" href="javascript:show('search0');hide('search1');"><img src="/static/css/but28.png" border="0" id="butt1"</a>
+	<a id="input_t" href="javascript:show('search1');hide('search0');"><img src="/static/css/but29.png" border="0" id="butt2"></a>
+
+
+        <form method="get" action="/freq/" style="display:block;" id = "search0">
+					<p id = "input">Частота лексем в новостях с:</p>
+                    <input name="news" type="text" id="input_t"/>
+                    <input type="submit" id="input_t" value="Построить"/>
+        </form>
+        
+
+        <form method="get" action="/freq/" style="display:none;" id = "search1">
+                    <p id = "input">Частота лексем в комментариях к новостям с:</p>
+                    <input name="coms" type="text" id="input_t"/>
+        <input type="submit" id="input_t" value="Построить"/>
+
+        </form>
+{% endblock %}

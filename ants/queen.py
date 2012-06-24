@@ -142,9 +142,10 @@ def queen(request):
                         to_date = formdata['to_date']
                     else:
                         to_date = datetime.datetime.now()
-                    news = new.objects.filter(n_date__gte = from_date)# text_vector = None)
+                    news = new.objects.filter(n_date__gte = from_date)
                     news = news.exclude(n_date__gte=to_date)
-                    
+                    news = news.exclude(text_vector = None)
+                    print len(news)
                     if num != 'all':
                         news = news[:num]
                     if news.count != 0:
@@ -157,7 +158,6 @@ def queen(request):
                                 
                         
                         thre = thread_list.objects.filter(active = True, stat = False)
-                        print 'Дошел'
                         #Start threads
                         tr = formdata['threads']
                         for i in xrange(len(thre)):

@@ -109,4 +109,35 @@ ul.errorlist {
 	text-align: center;
 	line-height: 20px;
 }
-
+.ftab_top {
+	background-attachment: scroll;
+	background-image: url(tab_top.png);
+	background-repeat: no-repeat;
+	background-position: center top;
+	font-family: Consolas;
+	font-size: 18px;
+	color: #FFFFFF;
+}
+.ftab_middle {
+	background-attachment: scroll;
+	background-image: url(tab_center.png);
+	background-repeat: repeat-y;
+	background-position: center top;
+	font-family: Consolas;
+	font-size: 14px;
+	color: #4D4D4D;
+/*
+	line-height: 1.5em;
+	border-bottom-style: dotted;
+	border-bottom-color: #969696;
+	border-bottom-width: thin;
+*/
+	}
+.ftab_fotter {
+	background-attachment: scroll;
+	background-image: url(tab_fotter.png);
+	background-repeat: no-repeat;
+	background-position: center top;
+	font-family: Consolas;
+	font-size: 18px;
+	color: #FFFFFF;
